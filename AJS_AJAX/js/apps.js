@@ -7,10 +7,11 @@ btnGet.addEventListener('click', function(){
         method: 'GET',
         success: function(response){
             console.log(response);
-            let film = response;
-            for (const film of films) {
-                console.log(film.title);
+            let results = response.results;
+            for (const result of results) {
+                console.log(result.title);
             }
+            createTable(results);
         },
         error: function(error){
             if(error.status === 404){
@@ -23,3 +24,15 @@ btnGet.addEventListener('click', function(){
 
     });
 });
+
+
+function createTable(data){
+    for(let i = 0; i < data.length; i++){
+        let title = data[i].title;
+        let table = $("tbody");
+        table.append(`<tr>
+            <td>${title}</td>
+        </tr>`)
+    }
+
+}
