@@ -10,9 +10,6 @@ getBtn.addEventListener('click', function(){
         console.log(data);
         let results = data.results;
         for (const result of results) {
-            if(data.next){
-                
-            }
             console.log(result.name);
         }
         generateTable(results);
